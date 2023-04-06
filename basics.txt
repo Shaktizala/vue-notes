@@ -1,0 +1,34 @@
+SFC Single File Component
+- it's a reusable self-contained block of code
+- it has html,css and js together
+
+Declarative rendering
+- we can describe how html should look based on js state
+- when state changes html updated automatically
+- State that can trigger updates when changed are considered reactive.
+- We can declare reactive state using Vue's reactive() API.
+- reactive() only works on objects
+
+        import { reactive } from 'vue'
+
+        const counter = reactive({
+        count: 0
+        })
+
+        console.log(counter.count) // 0
+        counter.count++
+
+
+- ref() can take any value type and create an object that exposes the inner value under a .value property.
+
+        import { ref } from 'vue'
+
+        const message = ref('Hello World!')
+
+        console.log(message.value) // "Hello World!"
+        message.value = 'Changed'
+
+- Reactive state declared in the component's <script setup> block can be used directly in the template.
+-This is how we can render dynamic text based on the value of the counter object and message ref, using mustaches syntax:
+    <h1>{{ message }}</h1>
+    <p>count is: {{ counter.count }}</p>
